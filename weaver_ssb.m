@@ -56,17 +56,17 @@ ylabel("|P1(f)|")
 ylim([-60 0])
 
 f1 = 1e6 + f0;
-USB = Sig0_I .* cos(2 * pi * f1 * t) + Sig0_Q .* sin(2 * pi * f1 * t);
+USB = Sig0_I .* cos(2 * pi * f1 * t) + Sig0_Q .* sin(2 * pi * f1 * t); %USB调制
 f1 = 1e6 - f0;
-LSB = Sig0_I .* cos(2 * pi * f1 * t) - Sig0_Q .* sin(2 * pi * f1 * t);
+LSB = Sig0_I .* cos(2 * pi * f1 * t) - Sig0_Q .* sin(2 * pi * f1 * t); %LSB调制
 
-figure(3)
+figure(3) %可看到USB与LSB图像
 subplot(2, 1, 1)
 Y = fft(USB);
 P1 = fftshift(abs(Y / L));
 f = linspace(-Fs / 2, Fs / 2, L);
 plot(f, 20 * log10(P1))
-title("Single-Sided Amplitude Spectrum of X(t)")
+title("Single-Sided Amplitude Spectrum of USB")
 xlabel("f (Hz)")
 ylabel("|P1(f)|")
 ylim([-60 0])
@@ -76,7 +76,7 @@ Y = fft(LSB);
 P1 = fftshift(abs(Y / L));
 f = linspace(-Fs / 2, Fs / 2, L);
 plot(f, 20 * log10(P1))
-title("Single-Sided Amplitude Spectrum of X(t)")
+title("Single-Sided Amplitude Spectrum of LSB")
 xlabel("f (Hz)")
 ylabel("|P1(f)|")
 ylim([-60 0])
